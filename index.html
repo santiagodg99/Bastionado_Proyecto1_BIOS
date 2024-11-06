@@ -1,0 +1,142 @@
+
+<!doctype html>
+
+<html>
+<head>
+  <meta name="viewport" content="width=device-width, minimum-scale=1.0, initial-scale=1.0, user-scalable=yes">
+  <meta name="theme-color" content="#4F7DC9">
+  <meta charset="UTF-8">
+  <title>Bastionado BIOS Lenovo</title>
+  <link rel="stylesheet" href="//fonts.googleapis.com/css?family=Source+Code+Pro:400|Roboto:400,300,400italic,500,700|Roboto+Mono">
+  <link rel="stylesheet" href="//fonts.googleapis.com/icon?family=Material+Icons">
+  <link rel="stylesheet" href="https://storage.googleapis.com/claat-public/codelab-elements.css">
+  <style>
+    .success {
+      color: #1e8e3e;
+    }
+    .error {
+      color: red;
+    }
+  </style>
+</head>
+<body>
+  <google-codelab-analytics gaid="UA-49880327-14"></google-codelab-analytics>
+  <google-codelab codelab-gaid=""
+                  id="bastionadobioslenovo"
+                  title="Bastionado BIOS Lenovo"
+                  environment="web"
+                  feedback-link="">
+    
+      <google-codelab-step label="Introducción" duration="0">
+        <p>A continuación se muestra una guía paso a paso para bastionar la BIOS <strong>Lenovo GGCN32WW</strong>.</p>
+<p class="image-container"><img alt="Portada" src="img\\3939561fde0c0fa0.png"></p>
+<p>En ella se detallarán los parámetros que deberemos configurar para aportar seguridad al sistema y dificultar la manipulación del arranque.</p>
+
+
+      </google-codelab-step>
+    
+      <google-codelab-step label="Acceso a la BIOS" duration="0">
+        <p>Para acceder a la BIOS tendremos que reiniciar el equipo en primer lugar y, durante el arranque, presionar repetidamente la tecla <strong>F2</strong>, ó <strong>Fn+F2</strong> si el modo de teclas de acceso rápido <strong>(HotKey Mode)</strong> está habilitado.</p>
+<p class="image-container"><img alt="Acceso a la BIOS" src="img\\4ca42ccb3a2f0c45.jpg"></p>
+
+
+      </google-codelab-step>
+    
+      <google-codelab-step label="Configuración de contraseñas" duration="0">
+        <h2 is-upgraded>Contraseña de administrador</h2>
+<p>En primer lugar estableceremos una contraseña de administrador.</p>
+<p>Para ello accederemos a</p>
+<pre><code>Security → Set Administrator Password
+</code></pre>
+<p class="image-container"><img alt="Contraseña de administrador 1" src="img\\2cc95244fb0ec53c.jpg"></p>
+<p>Una vez allí ingresaremos y confirmaremos una contraseña segura.</p>
+<p class="image-container"><img alt="Contraseña de administrador 2" src="img\\f16e5d307fe2b1eb.jpg"></p>
+<h2 is-upgraded>Contraseña de encendido</h2>
+<p>Ahora habilitaremos la contraseña de encendido.</p>
+<p>Para ello accederemos a</p>
+<pre><code>Security → Power On Password
+</code></pre>
+<p>y seleccionaremos <strong><code>Enable</code></strong>.</p>
+<p class="image-container"><img alt="Contraseña de encendido" src="img\\77a6dd32e8c5ebe0.jpg"></p>
+<h2 is-upgraded>Contraseña de usuario</h2>
+<p>De manera opcional podremos establecer una contraseña de usuario.</p>
+<p>Para ello accederemos a</p>
+<pre><code>Security → Set User Password
+</code></pre>
+<p>e ingresaremos y confirmaremos una contraseña.</p>
+<p class="image-container"><img alt="Contraseña de usuario" src="img\\5db6c87f12766db2.jpg"></p>
+
+
+      </google-codelab-step>
+    
+      <google-codelab-step label="Configuración de arranque" duration="0">
+        <h2 is-upgraded>Modo de arranque</h2>
+<p>Deberemos acceder a la sección <strong><code>Boot</code></strong> y establecer el Boot Mode como <strong><code>UEFI Only</code></strong>, puesto que este será el modo de arranque más seguro para nuestro sistema.</p>
+<p>Ahora bien, en el caso de esta BIOS, si accedemos a dicha sección veremos que aparece la palabra <strong><code>EFI</code></strong>.</p>
+<p class="image-container"><img alt="ModoArranque" src="img\\3594747296d1845c.jpg"></p>
+<p>EFI es la partición del sistema donde se almacena la información de arranque, y es utilizada por los equipos que poseen la <strong>Interfaz de Firmware Extensible Unificada (UEFI)</strong>.</p>
+<p>Es decir, el boot mode ya está establecido en UEFI por defecto, luego no será necesario realizar ninguna acción.</p>
+<h2 is-upgraded>Orden de arranque</h2>
+<p>Si accedemos nuevamente a la sección <strong><code>Boot</code></strong> y previamente hemos insertado una unidad USB de arranque, veremos que por defecto el primer dispositivo de arranque es la unidad de disco duro.</p>
+<p class="image-container"><img alt="Orden Arranque 1" src="img\\3594747296d1845c.jpg"></p>
+<p>Para cambiar el orden de arranque podemos hacer uso de las teclas F5 y F6.</p>
+<p class="image-container"><img alt="Orden Arranque 2" src="img\\c599f11e7156ddf2.jpg"></p>
+<h2 is-upgraded>Arranque desde dispositivos externos</h2>
+<p>Una buena práctica de seguridad consiste en deshabilitar el arranque desde dispositivos externos.</p>
+<p>Para ello, deberemos buscar la opción <strong><code>USB Boot</code></strong> en la sección <strong><code>Boot</code></strong> y seleccionar <strong><code>Disabled</code></strong>.</p>
+<p class="image-container"><img alt="Arranque Externo" src="img\\b6f4a299346e8c08.jpg"></p>
+<h2 is-upgraded>Secure Boot</h2>
+<p>Para habilitar el Secure Boot iremos a la sección <strong><code>Security</code></strong>. Una vez allí nos aseguraremos de que la opción <strong><code>Secure Boot</code></strong> esté marcada como <strong><code>Enabled</code></strong>.</p>
+<p class="image-container"><img alt="Secure Boot" src="img\\6f969c02779b6a8f.jpg"></p>
+<p>Es fundamental habilitar esta opción ya que impide la ejecución durante el arranque de aplicaciones no firmadas o certificadas, lo que previene los ataques de código malicioso.</p>
+
+
+      </google-codelab-step>
+    
+      <google-codelab-step label="Configuración adicional" duration="0">
+        <p>Como opciones de configuración adicionales se recomiendan las siguientes:</p>
+<h2 is-upgraded>Deshabilitar puertos y características innecesarias</h2>
+<p>Es conveniente deshabilitar puertos y características que no se utilicen para evitar posibles brechas de seguridad en nuestro sistema.</p>
+<p>Para ello deberemos revisar todas las opciones disponibles en la sección <strong><code>Configuration</code></strong> y desactivar aquellas que no cumplan ninguna función primordial.</p>
+<p class="image-container"><img alt="Prt_Caract_Innec" src="img\\ea981e2289539355.jpg"></p>
+<h2 is-upgraded>Actualizar BIOS</h2>
+<p>Deberemos mantener la BIOS actualizada siempre a la última versión disponible con el fin de corregir vulnerabilidades conocidas.</p>
+<p>Para ello deberemos acceder con cierta periodicidad a la página de soporte de Lenovo en busca de nuevas actualizaciones para nuestra BIOS.</p>
+<p class="image-container"><img alt="Actualización BIOS 1" src="img\\81500a856410a773.jpg"></p>
+<p class="image-container"><img alt="Actualización BIOS 2" src="img\\eecd38ac4fcdcf3c.jpg"></p>
+<p><a href="https://pcsupport.lenovo.com/es/es/products/laptops-and-netbooks/3-series/ideapad-3-15itl6/82h8/82h802fusp/pf3nrrbx/downloads/driver-list/component?name=BIOS&id=5AC6A815-321D-440E-8833-B07A93E0428C" target="_blank">Enlace al sitio web</a></p>
+<h2 is-upgraded>Contraseñas de disco duro</h2>
+<p>Como última medida adicional podemos establecer contraseñas de disco duro con el fin de proteger el acceso al mismo durante el arranque.</p>
+<p>Entonces, accederemos una última vez a la sección <strong><code>Security</code></strong> y seleccionaremos la opción <strong><code>Set Hard Disk Passwords</code></strong>.</p>
+<p class="image-container"><img alt="Hard Disk Passwords" src="img\\a6a835331d81d1db.jpg"></p>
+<p>Tendremos que introducir dos contraseñas:</p>
+<ul>
+<li><strong>Master password</strong>: Es la contraseña principal del disco duro. Ofrece acceso completo al disco duro y sus configuraciones de seguridad.</li>
+</ul>
+<p class="image-container"><img alt="Master Password" src="img\\a7d71f01e8fb755.jpg"></p>
+<ul>
+<li><strong>User password</strong>: Es una contraseña secundaria que ofrece acceso limitado al disco duro para uso diario.</li>
+</ul>
+<p class="image-container"><img alt="User Password" src="img\\c622f9034025604d.jpg"></p>
+
+
+      </google-codelab-step>
+    
+      <google-codelab-step label="Finalizar y guardar cambios" duration="0">
+        <p>Una vez realizadas todas las configuraciones deberemos ir a la sección <strong><code>Exit</code></strong> y seleccionar <strong><code>Exit Saving Changes</code></strong>.</p>
+<p>Deberemos confirmar para guardar los cambios y reiniciar el sistema.</p>
+<p class="image-container"><img alt="Guardar Cambios" src="img\\bbaba0521f79bc3d.jpg"></p>
+
+
+      </google-codelab-step>
+    
+  </google-codelab>
+
+  <script src="https://storage.googleapis.com/claat-public/native-shim.js"></script>
+  <script src="https://storage.googleapis.com/claat-public/custom-elements.min.js"></script>
+  <script src="https://storage.googleapis.com/claat-public/prettify.js"></script>
+  <script src="https://storage.googleapis.com/claat-public/codelab-elements.js"></script>
+  <script src="//support.google.com/inapp/api.js"></script>
+
+</body>
+</html>

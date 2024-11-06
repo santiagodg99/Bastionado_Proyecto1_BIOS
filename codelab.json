@@ -1,0 +1,24 @@
+{
+  "environment": "web",
+  "format": "html",
+  "prefix": "https://storage.googleapis.com",
+  "mainga": "UA-49880327-14",
+  "updated": "2024-11-05T20:58:49+01:00",
+  "id": "bastionadobioslenovo",
+  "duration": 0,
+  "title": "Bastionado BIOS Lenovo",
+  "summary": "Guía para bastionado de la BIOS Lenovo GGCN32WW",
+  "source": "README.md",
+  "theme": "",
+  "status": [
+    "published"
+  ],
+  "category": [
+    "bastionado",
+    "bios"
+  ],
+  "tags": [
+    "web"
+  ],
+  "url": "bastionadobioslenovo"
+}
